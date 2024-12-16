@@ -10,9 +10,9 @@
 	</parent>
 	<groupId>com.spring.implementation</groupId>
 	<artifactId>RestApi</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.4-SNAPSHOT</version>
 	<name>RestApi</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Attempt to get bill server to connect with angular</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

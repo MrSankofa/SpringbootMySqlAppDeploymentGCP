@@ -17,6 +17,7 @@ import com.spring.implementation.repository.ProductRepository;
 
 
 @org.springframework.web.bind.annotation.RestController
+@CrossOrigin(origins = "https://frontend-dot-your-project-id.ue.r.appspot.com") // Allow requests from Angular
 public class RestController {
 
 	private final BillService billService;
@@ -25,7 +26,7 @@ public class RestController {
 
 	public RestController(BillService billService) { this.billService = billService; }
 
-	@GetMapping
+	@GetMapping("/api/bills")
 	public List<Bill> getAllBills() {
 		return billService.getAllBills();
 	}
