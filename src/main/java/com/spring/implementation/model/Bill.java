@@ -1,4 +1,4 @@
-package com.clean_slate.bills_rest_server;
+package com.spring.implementation.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

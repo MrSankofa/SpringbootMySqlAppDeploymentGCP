@@ -1,6 +1,8 @@
-package com.clean_slate.bills_rest_server;
+package com.spring.implementation.service;
 
 
+import com.spring.implementation.model.Bill;
+import com.spring.implementation.repository.BillRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
