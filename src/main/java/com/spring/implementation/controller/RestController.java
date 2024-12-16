@@ -17,7 +17,6 @@ import com.spring.implementation.repository.ProductRepository;
 
 
 @org.springframework.web.bind.annotation.RestController
-@CrossOrigin(origins = "https://frontend-dot-your-project-id.ue.r.appspot.com") // Allow requests from Angular
 public class RestController {
 
 	private final BillService billService;
@@ -26,21 +25,25 @@ public class RestController {
 
 	public RestController(BillService billService) { this.billService = billService; }
 
+	@CrossOrigin(origins = "https://frontend-dot-your-project-id.ue.r.appspot.com") // Allow requests from Angular
 	@GetMapping("/api/bills")
 	public List<Bill> getAllBills() {
 		return billService.getAllBills();
 	}
 
+	@CrossOrigin(origins = "https://frontend-dot-your-project-id.ue.r.appspot.com") // Allow requests from Angular
 	@GetMapping("/api/bills/{id}")
 	public Bill getBillById(@PathVariable Long id) {
 		return billService.getBillById(id);
 	}
 
+	@CrossOrigin(origins = "https://frontend-dot-your-project-id.ue.r.appspot.com") // Allow requests from Angular
 	@PostMapping
 	public Bill createBill(@RequestBody Bill bill) {
 		return billService.saveBill(bill);
 	}
 
+	@CrossOrigin(origins = "https://frontend-dot-your-project-id.ue.r.appspot.com") // Allow requests from Angular
 	@PutMapping("/api/bills/{id}")
 	public Bill updateBill(@PathVariable Long id, @RequestBody Bill bill) {
 		bill.setId(id); // Ensure the ID is set for update
