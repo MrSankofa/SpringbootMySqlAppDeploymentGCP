@@ -4,12 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.spring.implementation.model.Bill;
+import com.spring.implementation.service.BillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import com.spring.implementation.model.Products;
 import com.spring.implementation.model.ProductsDTO;
@@ -18,9 +18,49 @@ import com.spring.implementation.repository.ProductRepository;
 
 @org.springframework.web.bind.annotation.RestController
 public class RestController {
+
+	private final BillService billService;
 	@Autowired
 	ProductRepository productRepo;
-	
+
+	public RestController(BillService billService) { this.billService = billService; }
+
+	@CrossOrigin(origins = "https://frontend-dot-your-project-id.ue.r.appspot.com") // Allow requests from Angular
+	@GetMapping("/api/bills")
+	public List<Bill> getAllBills() {
+		return billService.getAllBills();
+	}
+
+	@CrossOrigin(origins = "https://frontend-dot-your-project-id.ue.r.appspot.com") // Allow requests from Angular
+	@GetMapping("/api/bills/{id}")
+	public Bill getBillById(@PathVariable Long id) {
+		return billService.getBillById(id);
+	}
+
+	@CrossOrigin(origins = "https://frontend-dot-your-project-id.ue.r.appspot.com") // Allow requests from Angular
+	@PostMapping
+	public Bill createBill(@RequestBody Bill bill) {
+		return billService.saveBill(bill);
+	}
+
+	@CrossOrigin(origins = "https://frontend-dot-your-project-id.ue.r.appspot.com") // Allow requests from Angular
+	@PutMapping("/api/bills/{id}")
+	public Bill updateBill(@PathVariable Long id, @RequestBody Bill bill) {
+		bill.setId(id); // Ensure the ID is set for update
+		return billService.saveBill(bill);
+	}
+
+	@DeleteMapping("/api/bills/{id}")
+	public void deleteBill(@PathVariable Long id) {
+		billService.deleteBill(id);
+	}
+
+	@PostMapping("/api/bills/batch-save")
+	public List<Bill> saveBills(@RequestBody List<Bill> bills) {
+		return billService.saveAllBills(bills);
+	}
+
+
 	@GetMapping("/welcome")
 	public String welcome() {
 		return "your rest endpoint works";
