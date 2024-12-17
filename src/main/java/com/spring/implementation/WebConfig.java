@@ -14,7 +14,7 @@ public class WebConfig {
       @Override
       public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/api/**") // Match your API paths
-            .allowedOrigins("https://frontend-dot-your-project-id.ue.r.appspot.com")
+            .allowedOrigins("https://frontend-dot-apibills.ue.r.appspot.com") // Your frontend URL
             .allowedMethods("GET", "POST", "PUT", "DELETE")
             .allowedHeaders("*") // Allow all headers
             .allowCredentials(true); // Allow cookies if needed
